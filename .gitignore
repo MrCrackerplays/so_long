@@ -3,4 +3,4 @@
 *.out
 *.o
 *.a
-minilibx-linux
+*.dylib

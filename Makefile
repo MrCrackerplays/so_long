@@ -1,26 +1,33 @@
 NAME := so_long
-OBJECTS := main.o
-OBJECTS := $(addprefix obj/,$(OBJECTS))
-HEADER_FILES := 
+UNAME = $(shell uname -s)
+
 ifdef DEBUG
 CFLAGS ?= -g -Wall -Werror -Wextra
 else
 CFLAGS ?= -Wall -Werror -Wextra
 endif
-ifdef LINUX
+OBJECTS := main.o
+OBJECTS := $(addprefix obj/,$(OBJECTS))
+HEADER_FILES := 
+
+ifeq ($(UNAME), Linux)
 MINILIBX ?= mlx_linux
+MLX_FLAGS = -L$(MINILIBX) -lmlx_linux -lXext -lX11 -lm -lz -L/usr/lib -I$(MINILIBX)
+OBJ_FLAGS = -I/usr/include -I$(MINILIBX) -O3
 else
 MINILIBX ?= mlx
+MLX_FLAGS = -L$(MINILIBX) -lmlx -framework OpenGL -framework Appkit
+OBJ_FLAGS = -I$(MINILIBX)
 endif
 
 all: $(NAME)
 
 $(NAME): minilibx $(OBJECTS)
 	$(MAKE) bonus -C ./libft
-	$(CC) $(CFLAGS) -L$(MINILIBX) -lmlx -L/usr/lib -I$(MINILIBX) -lXext -lX11 -lm -lz $(OBJECTS) libft/libft.a -o push_swap
+	$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJECTS) libft/libft.a -o $(NAME)
 
 obj/%.o: src/%.c $(HEADER_FILES)
-	$(CC) $(CFLAGS) -I/usr/include -I$(MINILIBX) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(OBJ_FLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) clean -C ./libft
@@ -29,12 +36,14 @@ clean:
 
 fclean: clean
 	$(MAKE) fclean -C ./libft
+	rm -f libmlx.dylib
 	rm -f $(NAME)
 
 re: fclean all
 
 minilibx:
 	$(MAKE) -C ./$(MINILIBX)
+	cp $(MINILIBX)/libmlx.dylib libmlx.dylib
 
 bonus: all
 
