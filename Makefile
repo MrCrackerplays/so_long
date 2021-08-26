@@ -31,7 +31,7 @@ CC = clang
 
 all: $(NAME)
 
-$(NAME): $(MINILIBX_FILE) $(OBJECTS)
+$(NAME): minilibx_file $(OBJECTS)
 	$(MAKE) bonus -C ./libft
 	@echo "[so_long] compiling so_long"
 	@$(CC) $(CFLAGS) $(OBJECTS) libft/libft.a -o $(NAME) $(MLX_FLAGS)
@@ -39,21 +39,23 @@ $(NAME): $(MINILIBX_FILE) $(OBJECTS)
 obj/%.o: src/%.c $(HEADER_FILES)
 	@$(CC) $(CFLAGS) $(OBJ_FLAGS) -c $< -o $@
 
-$(MINILIBX_FILE):
+minilibx_file:
 	@echo "[so_long] compiling mlx"
 	$(MAKE) -C ./$(MINILIBX_FOLDER)
 	@cp $(MINILIBX_FOLDER)/$(MINILIBX_FILE) $(MINILIBX_FILE)
+	@cp $(MINILIBX_FOLDER)/$(MINILIBX_FILE) minilibx_file
 
 clean:
 	@echo "[so_long] cleaning so_long"
 	$(MAKE) clean -C ./libft
 	$(MAKE) clean -C ./$(MINILIBX_FOLDER)
-	@rm -f $(MINILIBX_FILE)
+	@rm -f minilibx_file
 	@rm -f $(OBJECTS)
 
 fclean: clean
 	@echo "[so_long] fully cleaning so_long"
 	$(MAKE) fclean -C ./libft
+	@rm -f $(MINILIBX_FILE)
 	@rm -f $(NAME)
 
 re: fclean all
