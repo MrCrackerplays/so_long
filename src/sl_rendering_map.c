@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 12:53:43 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/26 14:16:05 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/31 11:12:57 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	background(t_application *application)
 	t_img			tileset;
 
 	y = 0;
-	canvas = sl_image_from_ximage(application->canvas);
 	tileset = sl_image_from_ximage(application->tileset);
+	canvas = sl_image_from_ximage(application->canvas);
 	while (y < application->gamestate.map.height)
 	{
 		x = 0;

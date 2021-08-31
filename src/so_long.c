@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/19 10:48:08 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/26 14:29:50 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/31 12:15:28 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		call_error("Incorrect amount of arguments\n");
+	if (SPRITE_HEIGHT < 1 || SPRITE_WIDTH < 1)
+		call_error("Incorrect sprite width/height\n");
 	application.mlx = mlx_init();
 	setup_state(&application.gamestate, argv[1]);
 	application.win = mlx_new_window(application.mlx,

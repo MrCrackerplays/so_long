@@ -6,13 +6,14 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/19 15:01:41 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/26 14:16:21 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/26 17:33:29 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../headers/canvas_management.h"
 #include "../headers/sl_rendering.h"
+#include "stdio.h"
 
 t_boundaries	player_sprite_bounds(t_application *application)
 {

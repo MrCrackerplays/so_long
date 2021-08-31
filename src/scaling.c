@@ -6,34 +6,34 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/21 02:14:20 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/26 14:15:17 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/31 11:46:59 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/scaling.h"
 
-t_img	scale(void *mlx, t_img *img, t_dimensions from, t_dimensions to)
+t_img	scale(void *mlx, t_img img, t_dimensions from, t_dimensions to)
 {
-	t_img	scaled;
-	double	x_ratio;
-	double	y_ratio;
-	int		px;
-	int		py;
-	int		i;
-	int		j;
-//todo test if works and make norm compliant (if that's even possible)
-	x_ratio = from.width / (double) to.width;
-	y_ratio = from.height / (double) to.height;
+	t_img		scaled;
+	t_scaling	info;
+	int			i;
+	int			j;
+
+	info.x_ratio = from.width / (double) to.width;
+	info.y_ratio = from.height / (double) to.height;
 	i = 0;
 	scaled.img_ptr = mlx_new_image(mlx, to.width, to.height);
-	scaled.address = mlx_get_data_addr(scaled.img_ptr, &scaled.bits_per_pixel, &scaled.line_size, &scaled.endian);
-	while (i < to.height) {
+	scaled.address = mlx_get_data_addr(scaled.img_ptr, &scaled.bits_per_pixel,
+			&scaled.line_size, &scaled.endian);
+	while (i < to.height)
+	{
 		j = 0;
-		while (j < to.width) {
-			px = (int)(j * x_ratio);
-			py = (int)(i * y_ratio);
-			// i * img->line_size + j * (img->bits_per_pixel / 8)
-			((int *)scaled.address)[(i * to.width) + j] = ((int *)img->address)[(py * from.width) + px];
+		while (j < to.width)
+		{
+			info.px = (int)(j * info.x_ratio);
+			info.py = (int)(i * info.y_ratio);
+			((int *)scaled.address)[(i * to.width) + j]
+				= ((int *)img.address)[(info.py * from.width) + info.px];
 			j++;
 		}
 		i++;
@@ -41,11 +41,14 @@ t_img	scale(void *mlx, t_img *img, t_dimensions from, t_dimensions to)
 	return (scaled);
 }
 
-void	apply_scale(void *mlx, t_img *img, t_dimensions from, t_dimensions to)
+void	apply_scale(void *mlx, void **img_ptr, t_dimensions from,
+	t_dimensions to)
 {
 	t_img	scaled;
+	t_img	img;
 
+	img = sl_image_from_ximage(*img_ptr);
 	scaled = scale(mlx, img, from, to);
-	mlx_destroy_image(mlx, img->img_ptr);
-	*img = scaled;
+	mlx_destroy_image(mlx, *img_ptr);
+	*img_ptr = scaled.img_ptr;
 }

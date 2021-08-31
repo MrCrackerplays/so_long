@@ -1,10 +1,14 @@
 NAME := so_long
 UNAME := $(shell uname -s)
+SPRITE_WIDTH ?= 16
+SPRITE_HEIGHT ?= 16
 
 ifdef DEBUG
-CFLAGS ?= -g -Wall -Werror -Wextra
+CFLAGS ?= -g -Wall -Werror -Wextra -D SPRITE_WIDTH=$(SPRITE_WIDTH) \
+	-D SPRITE_HEIGHT=$(SPRITE_HEIGHT)
 else
-CFLAGS ?= -Wall -Werror -Wextra
+CFLAGS ?= -Wall -Werror -Wextra -D SPRITE_WIDTH=$(SPRITE_WIDTH) \
+	-D SPRITE_HEIGHT=$(SPRITE_HEIGHT)
 endif
 OBJECTS := so_long.o game.o shutdown.o map.o game_setup.o controls.o assets.o \
 	canvas_management.o scaling.o sl_rendering.o sl_rendering_map.o \
