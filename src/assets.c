@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/21 02:55:56 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/31 11:39:58 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/31 14:53:58 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	load_assets(t_application *application)
 			"assets/tileset.xpm", &ts_dim.width, &ts_dim.height);
 	if (application->tileset == NULL)
 		call_error("Failed to load tileset.xpm\n");
-	if (SPRITE_HEIGHT != 16 || SPRITE_WIDTH != 16)
+	if (LINUX == 1 && (SPRITE_HEIGHT != 16 || SPRITE_WIDTH != 16))
 	{
 		apply_scale(application->mlx, &application->spritesheet, ss_dim,
 			(t_dimensions){ss_dim.width * SPRITE_WIDTH / 16, ss_dim.height
