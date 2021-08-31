@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/25 12:53:43 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/31 11:12:57 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/08/31 14:15:22 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	map_tiles(t_application *application)
 		{
 			if (get_tile_at(application->gamestate.map, x, y) != EMPTY
 				|| (application->gamestate.map.random_data[x + y
-						* (application->gamestate.map.width)] % 4) == 0)
+						* (application->gamestate.map.width)] % 16) < 4)
 				sl_combine_image(&canvas, (t_position){
 					(int)x * SPRITE_WIDTH,
 					(int)y * SPRITE_HEIGHT},

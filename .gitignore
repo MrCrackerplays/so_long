@@ -4,3 +4,5 @@
 *.o
 *.a
 *.dylib
+so_long
+minilibx_file
