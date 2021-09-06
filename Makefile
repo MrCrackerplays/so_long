@@ -41,6 +41,7 @@ $(NAME): minilibx_file $(OBJECTS)
 	@$(CC) $(CFLAGS) $(OBJECTS) libft/libft.a -o $(NAME) $(MLX_FLAGS)
 
 obj/%.o: src/%.c $(HEADER_FILES)
+	@mkdir -p obj
 	@$(CC) $(CFLAGS) $(OBJ_FLAGS) -c $< -o $@
 
 minilibx_file:
