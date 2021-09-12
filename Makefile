@@ -62,6 +62,7 @@ fclean: clean
 	$(MAKE) fclean -C ./libft
 	@rm -f $(MINILIBX_FILE)
 	@rm -f $(NAME)
+	@rm -rf obj
 
 re: fclean all
 
