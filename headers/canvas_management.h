@@ -6,12 +6,13 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/19 11:56:57 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/24 11:52:45 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/15 15:03:34 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVAS_MANAGEMENT_H
 # define CANVAS_MANAGEMENT_H
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -20,11 +21,13 @@ typedef struct s_img
 	int		line_size;
 	int		endian;
 }	t_img;
+
 typedef struct s_position
 {
 	int	x;
 	int	y;
 }	t_position;
+
 typedef struct s_boundaries
 {
 	int	x_origin;

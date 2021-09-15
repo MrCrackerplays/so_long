@@ -6,12 +6,13 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/11 14:35:41 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/25 13:52:25 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/15 15:04:12 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
+
 typedef enum e_direction {
 	UP = 3,
 	DOWN = 2,

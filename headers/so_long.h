@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/12 17:46:06 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/31 11:49:13 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/15 15:04:37 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # endif
 # include "controls.h"
 # include "game.h"
+
 typedef struct s_application
 {
 	void		*mlx;

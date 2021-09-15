@@ -6,13 +6,14 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/08/10 17:42:31 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/08/26 10:52:36 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/15 15:04:03 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 # include "player.h"
+
 typedef enum e_tile {
 	EMPTY = 0,
 	WALL = 1,
@@ -20,6 +21,7 @@ typedef enum e_tile {
 	EXIT = 3,
 	START = 4
 }	t_tile;
+
 typedef struct s_map
 {
 	unsigned int	width;

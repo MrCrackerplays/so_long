@@ -6,7 +6,7 @@
 /*   By: pdruart <pdruart@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 11:12:00 by pdruart       #+#    #+#                 */
-/*   Updated: 2021/05/27 13:16:54 by pdruart       ########   odam.nl         */
+/*   Updated: 2021/09/15 15:03:55 by pdruart       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_string_buffer
 	char					*buff;
 	struct s_string_buffer	*next;
 }				t_string_buffer;
+
 t_string_buffer	*create_string_buffer(int fd, t_string_buffer *next);
 int				get_next_line(int fd, char **line);
 int				gnl_strlen(const char *str);
